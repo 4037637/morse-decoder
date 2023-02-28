@@ -1,4 +1,5 @@
 const MORSE_TABLE = {
+    ' ':      ' ',  
     '.-':     'a',
     '-...':   'b',
     '-.-.':   'c',
@@ -37,8 +38,22 @@ const MORSE_TABLE = {
     '-----':  '0',
 };
 
-function decode(expr) {
-    // write your solution here
+function decode(aa) {
+  let arr = aa.match(/.{1,10}/g);
+  // console.log(arr)
+  let arrSum = ''
+  
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i].replaceAll("00", "");
+    arr[i] = arr[i].replaceAll("10", ".");
+    arr[i] = arr[i].replaceAll("11", "-");
+    arr[i] = arr[i].replaceAll("**********", " ");
+  let mm = arr[i];
+    arrSum += MORSE_TABLE[mm]
+
+ }
+return arrSum  
+
 }
 
 module.exports = {
